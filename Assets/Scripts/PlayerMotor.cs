@@ -1,30 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
+    public float speed = 5f;
+    public float gravity = -9.81f;
+    public float jumpHeight = 1.5f;
 
     private CharacterController controller;
-
     private Vector3 playerVelocity;
-    public float speed = 5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
-
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ProcessMove(Vector2 input)
     {
-        
-    }
-
-    public void ProcessMove(Vector2 input) {
         Vector3 moveDir = new Vector3(input.x, 0, input.y);
         controller.Move(transform.TransformDirection(moveDir) * speed * Time.deltaTime);
+
+        playerVelocity.y += gravity * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+        if (controller.isGrounded)
+        {
+            playerVelocity.y = -2f;
+        }
+        Debug.Log(gravity + " " + controller.transform.position.y);
+    }
+
+    public void Jump()
+    {
+        if (controller.isGrounded)
+        {
+            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
     }
 }

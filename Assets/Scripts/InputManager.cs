@@ -10,17 +10,31 @@ public class InputManager : MonoBehaviour
 
     void Awake()
     {
-        playerInput = new PlayerInput();
         motor = GetComponent<PlayerMotor>();
     }
 
-    void FixedUpdate()
+    private void Reset()
     {
+    }
+
+    private void Start()
+    {
+    }
+
+    void FixedUpdate() // Pre-physics & Pre-inputs
+    {
+        // Move in FixedUpdate b/c this is physics based movement.
         motor.ProcessMove(playerInput.OnFoot.Movement.ReadValue<Vector2>());
     }
 
-    private void OnEnable()
+    void Update() // Post-physics
     {
+    }
+
+    private void OnEnable() // When script restarts, i.e. when InputManager.cs is saved.
+    {
+        playerInput = new PlayerInput();
+        playerInput.OnFoot.Jump.performed += ctx => motor.Jump();
         playerInput.OnFoot.Enable();
     }
 

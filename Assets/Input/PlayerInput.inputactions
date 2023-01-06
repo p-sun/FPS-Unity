@@ -22,6 +22,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "c0ad0e2a-dca1-4019-835a-05417e2c8268",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LookStadiaY",
+                    "type": "Value",
+                    "id": "4c8a4804-87d0-42ec-8f72-2058d45a8c89",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LookStadiaX",
+                    "type": "Value",
+                    "id": "7e33b913-cc3f-4d32-b39e-ba37ea01c0eb",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -275,6 +302,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95e4f97f-2c8a-4b22-b19a-725d3eff2bd2",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64d179b6-bf4c-4f43-83c5-bd9af160c5fc",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74fca962-c030-4911-84b4-75d77387a361",
+                    "path": "<HID::Google LLC Stadia Controller rev. A>/rz",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LookStadiaY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38610c34-24c1-4003-b840-eecb930231af",
+                    "path": "<HID::Google LLC Stadia Controller rev. A>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LookStadiaX",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

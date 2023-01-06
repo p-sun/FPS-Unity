@@ -44,6 +44,33 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""c0ad0e2a-dca1-4019-835a-05417e2c8268"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LookStadiaY"",
+                    ""type"": ""Value"",
+                    ""id"": ""4c8a4804-87d0-42ec-8f72-2058d45a8c89"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LookStadiaX"",
+                    ""type"": ""Value"",
+                    ""id"": ""7e33b913-cc3f-4d32-b39e-ba37ea01c0eb"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -299,6 +326,50 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95e4f97f-2c8a-4b22-b19a-725d3eff2bd2"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64d179b6-bf4c-4f43-83c5-bd9af160c5fc"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74fca962-c030-4911-84b4-75d77387a361"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/rz"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookStadiaY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38610c34-24c1-4003-b840-eecb930231af"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookStadiaX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -309,6 +380,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot = asset.FindActionMap("OnFoot", throwIfNotFound: true);
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
+        m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
+        m_OnFoot_LookStadiaY = m_OnFoot.FindAction("LookStadiaY", throwIfNotFound: true);
+        m_OnFoot_LookStadiaX = m_OnFoot.FindAction("LookStadiaX", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -370,12 +444,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private IOnFootActions m_OnFootActionsCallbackInterface;
     private readonly InputAction m_OnFoot_Movement;
     private readonly InputAction m_OnFoot_Jump;
+    private readonly InputAction m_OnFoot_Look;
+    private readonly InputAction m_OnFoot_LookStadiaY;
+    private readonly InputAction m_OnFoot_LookStadiaX;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
         public OnFootActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_OnFoot_Movement;
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
+        public InputAction @Look => m_Wrapper.m_OnFoot_Look;
+        public InputAction @LookStadiaY => m_Wrapper.m_OnFoot_LookStadiaY;
+        public InputAction @LookStadiaX => m_Wrapper.m_OnFoot_LookStadiaX;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -391,6 +471,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnJump;
+                @Look.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLook;
+                @LookStadiaY.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLookStadiaY;
+                @LookStadiaY.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLookStadiaY;
+                @LookStadiaY.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLookStadiaY;
+                @LookStadiaX.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLookStadiaX;
+                @LookStadiaX.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLookStadiaX;
+                @LookStadiaX.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLookStadiaX;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -401,6 +490,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+                @LookStadiaY.started += instance.OnLookStadiaY;
+                @LookStadiaY.performed += instance.OnLookStadiaY;
+                @LookStadiaY.canceled += instance.OnLookStadiaY;
+                @LookStadiaX.started += instance.OnLookStadiaX;
+                @LookStadiaX.performed += instance.OnLookStadiaX;
+                @LookStadiaX.canceled += instance.OnLookStadiaX;
             }
         }
     }
@@ -409,5 +507,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
+        void OnLookStadiaY(InputAction.CallbackContext context);
+        void OnLookStadiaX(InputAction.CallbackContext context);
     }
 }

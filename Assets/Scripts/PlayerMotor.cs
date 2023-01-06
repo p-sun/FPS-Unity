@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMotor : MonoBehaviour
 {
     public float speed = 5f;
-    public float gravity = -9.81f;
+    public float gravity = -30f;
     public float jumpHeight = 1.5f;
 
     private CharacterController controller;
@@ -25,7 +25,6 @@ public class PlayerMotor : MonoBehaviour
         {
             playerVelocity.y = -2f;
         }
-        Debug.Log(gravity + " " + controller.transform.position.y);
     }
 
     public void Jump()

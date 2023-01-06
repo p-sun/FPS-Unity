@@ -742,6 +742,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029150099}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!20 &1255708178 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9069732949292916571, guid: ae15c99d84b7b3540abd1e7990fb1dea, type: 3}
+  m_PrefabInstance: {fileID: 9069732949442409000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1312419031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  gravity: -9.81
+  gravity: -30
   jumpHeight: 1.5
 --- !u!143 &1625313200
 CharacterController:
@@ -1322,7 +1327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9069732949292916572, guid: ae15c99d84b7b3540abd1e7990fb1dea, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.1
+      value: -5.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae15c99d84b7b3540abd1e7990fb1dea, type: 3}

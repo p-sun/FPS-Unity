@@ -7,10 +7,12 @@ public class InputManager : MonoBehaviour
 {
     private PlayerInput playerInput;
     private PlayerMotor motor;
+    private PlayerLook look;
 
     void Awake()
     {
         motor = GetComponent<PlayerMotor>();
+        look = GetComponent<PlayerLook>();
     }
 
     private void Reset()
@@ -29,6 +31,17 @@ public class InputManager : MonoBehaviour
 
     void Update() // Post-physics
     {
+    }
+
+    private void LateUpdate()
+    {
+        Vector2 lookInput = playerInput.OnFoot.Look.ReadValue<Vector2>();
+        if (lookInput.Equals(Vector2.zero))
+        {
+            look.ProcessLookJoystick(playerInput.OnFoot.LookStadiaX.ReadValue<float>(), playerInput.OnFoot.LookStadiaY.ReadValue<float>());
+        } else {
+            look.ProcessLookMouse(lookInput);
+        }
     }
 
     private void OnEnable() // When script restarts, i.e. when InputManager.cs is saved.

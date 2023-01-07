@@ -488,8 +488,6 @@ Transform:
   - {fileID: 743395378}
   - {fileID: 1601666339}
   - {fileID: 777738763}
-  - {fileID: 339801586}
-  - {fileID: 1447936255}
   m_Father: {fileID: 1170084495}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -524,8 +522,8 @@ Transform:
   m_LocalScale: {x: 4, y: 2.5, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 207959846}
-  m_RootOrder: 6
+  m_Father: {fileID: 1894174690}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &339801587
 BoxCollider:
@@ -1478,6 +1476,7 @@ Transform:
   - {fileID: 207959846}
   - {fileID: 1436370266}
   - {fileID: 1203408955}
+  - {fileID: 1894174690}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1591,7 +1590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a5aa9ac0184154d8f184d7487ecbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Use Keypad
+  promptMessage: Use Keypad (E)
+  door: {fileID: 1894174689}
 --- !u!20 &1255708178 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 9069732949292916571, guid: ae15c99d84b7b3540abd1e7990fb1dea, type: 3}
@@ -2130,8 +2130,8 @@ Transform:
   m_LocalScale: {x: 4, y: 2.5, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 207959846}
-  m_RootOrder: 7
+  m_Father: {fileID: 1894174690}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1447936256
 BoxCollider:
@@ -2570,6 +2570,60 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888112242}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1894174689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894174690}
+  - component: {fileID: 1894174691}
+  m_Layer: 0
+  m_Name: Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1894174690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894174689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 339801586}
+  - {fileID: 1447936255}
+  m_Father: {fileID: 1170084495}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1894174691
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894174689}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f66d8a1caeb06e8499bf43faf019703e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &2067860365
 GameObject:
   m_ObjectHideFlags: 0

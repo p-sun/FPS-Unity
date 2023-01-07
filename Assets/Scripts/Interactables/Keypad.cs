@@ -4,22 +4,14 @@ using UnityEngine;
 
 public class Keypad : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject door;
+    private bool doorOpen;
 
     protected override void Interact()
     {
         base.Interact();
-
-        Debug.Log("Intearcted with " + gameObject.name);
+        doorOpen = !doorOpen;
+        door.GetComponent<Animator>().SetBool("IsOpen", doorOpen);
     }
 }

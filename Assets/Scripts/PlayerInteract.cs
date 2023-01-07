@@ -4,6 +4,7 @@ public class PlayerInteract : MonoBehaviour
 {
     private Camera cam;
     private PlayerUI playerUI;
+    private InputManager inputManager;
 
     [SerializeField]
     private float raycastDist = 3f;
@@ -14,6 +15,7 @@ public class PlayerInteract : MonoBehaviour
     {
         cam = GetComponent<PlayerLook>().cam;
         playerUI = GetComponent<PlayerUI>();
+        inputManager = GetComponent<InputManager>();
     }
 
     void Update()
@@ -27,7 +29,14 @@ public class PlayerInteract : MonoBehaviour
         {
             if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
-                playerUI.UpdateText(hitInfo.collider.GetComponent<Interactable>().promptMessage);
+                Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
+                playerUI.UpdateText(interactable.promptMessage);
+
+                if (inputManager.onFoot.Interact.triggered)
+                {
+                    interactable.BaseInteract();
+                }
+
             }
         }
     }

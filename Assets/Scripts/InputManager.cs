@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    public PlayerInput.OnFootActions onFoot;
     private PlayerMotor motor;
     private PlayerLook look;
-    private PlayerInput.OnFootActions onFoot;
 
     void Awake()
     {

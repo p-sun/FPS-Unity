@@ -89,6 +89,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""7aec8944-a596-4b3b-9a41-10522f9548ff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -452,6 +461,39 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67e369ad-544c-4eb1-9f72-f116231ac698"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d958fe1b-d36c-48af-943e-4ecb182c523d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a0b1e81-b407-4f99-a483-f43f8e1ca609"",
+                    ""path"": ""<HID::Google LLC Stadia Controller rev. A>/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -985,6 +1027,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_LookStadiaX = m_OnFoot.FindAction("LookStadiaX", throwIfNotFound: true);
         m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
         m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
+        m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1063,6 +1106,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_LookStadiaX;
     private readonly InputAction m_OnFoot_Crouch;
     private readonly InputAction m_OnFoot_Sprint;
+    private readonly InputAction m_OnFoot_Interact;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -1074,6 +1118,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @LookStadiaX => m_Wrapper.m_OnFoot_LookStadiaX;
         public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
         public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
+        public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1104,6 +1149,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnSprint;
+                @Interact.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -1129,6 +1177,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -1247,6 +1298,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnLookStadiaX(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

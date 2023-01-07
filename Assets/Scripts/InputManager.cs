@@ -47,7 +47,11 @@ public class InputManager : MonoBehaviour
     private void OnEnable() // When script restarts, i.e. when InputManager.cs is saved.
     {
         playerInput = new PlayerInput();
+        
         playerInput.OnFoot.Jump.performed += ctx => motor.Jump();
+        playerInput.OnFoot.Crouch.started += ctx => motor.Crouch();
+        playerInput.OnFoot.Crouch.canceled += ctx => motor.Crouch();
+
         playerInput.OnFoot.Enable();
     }
 

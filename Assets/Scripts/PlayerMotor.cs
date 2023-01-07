@@ -9,6 +9,9 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
 
+    private bool crouching = false;
+    private float crouchTimer = -1f;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -32,6 +35,34 @@ public class PlayerMotor : MonoBehaviour
         if (controller.isGrounded)
         {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+    }
+
+    public void Crouch()
+    {
+        crouching = !crouching;
+        crouchTimer = 0;
+    }
+
+    // Private Update -----------------
+    private void Update()
+    {
+        _UpdateCrouch();
+    }
+
+    private void _UpdateCrouch()
+    {
+        if (crouchTimer >= 0)
+        {
+            crouchTimer += Time.deltaTime;
+            float p = Mathf.Pow(crouchTimer / 1, 1.6f); // Crouch is slow at first then fast
+
+            // 2 - Player is exactly standing at ground height. 1 - Numbers height OR lower than 1 will move player UP.
+            float targetHeight = crouching ? 1f : 2f;
+            controller.height = Mathf.Lerp(controller.height, targetHeight, p);
+            if (p > 1) {
+                crouchTimer = -1f;
+            }
         }
     }
 }

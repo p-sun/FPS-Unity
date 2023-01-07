@@ -7,7 +7,7 @@ public class PlayerInteract : MonoBehaviour
     private InputManager inputManager;
 
     [SerializeField]
-    private float raycastDist = 3f;
+    private float raycastDist = 5f;
     [SerializeField]
     private LayerMask mask;
 

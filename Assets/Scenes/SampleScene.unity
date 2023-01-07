@@ -1957,7 +1957,9 @@ GameObject:
   - component: {fileID: 1262515800}
   - component: {fileID: 1262515799}
   - component: {fileID: 1262515798}
-  m_Layer: 0
+  - component: {fileID: 1262515802}
+  - component: {fileID: 1262515801}
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1971,14 +1973,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262515796}
-  m_LocalRotation: {x: -0.2913488, y: -0.87735987, z: -0.36526337, w: -0.109262355}
+  m_LocalRotation: {x: 0.27839896, y: -0.11924144, z: -0.37522635, w: -0.8760598}
   m_LocalPosition: {x: -10, y: 1.741, z: 10}
   m_LocalScale: {x: 0.59999985, y: 0.59999985, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1828168316}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -35.259, y: -209.7, z: 46.372}
+  m_LocalEulerAnglesHint: {x: -35.259, y: 319.09088, z: 46.372}
 --- !u!65 &1262515798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2042,6 +2044,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262515796}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1262515801
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262515796}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d91cd9cf2a5fa434bba15c2a300f024e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1262515802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262515796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6419c16131cc2f649905c0730849baea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptMessage: Animate Cube (E)
 --- !u!1 &1312419031
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,7 +3512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5856458580433003820, guid: ae15c99d84b7b3540abd1e7990fb1dea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.69
+      value: -6.11
       objectReference: {fileID: 0}
     - target: {fileID: 5856458580433003820, guid: ae15c99d84b7b3540abd1e7990fb1dea, type: 3}
       propertyPath: m_LocalPosition.y

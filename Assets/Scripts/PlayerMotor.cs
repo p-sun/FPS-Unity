@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    public float gravity = -30f;
     // Constants
     public float walkSpeed = 5;
     public float sprintSpeed = 16;
+    public float gravity = -30;
     public float jumpHeight = 1.5f;
 
     private CharacterController controller;
@@ -27,11 +27,14 @@ public class PlayerMotor : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
+    // Fixed Update -----------------
     public void ProcessMove(Vector2 input)
     {
+        // Move Horizontally
         Vector3 moveDir = new Vector3(input.x, 0, input.y);
         controller.Move(transform.TransformDirection(moveDir) * speed * Time.deltaTime);
 
+        // Move Vertically
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
         if (controller.isGrounded)
@@ -40,6 +43,7 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
+    // Input -----------------
     public void Jump()
     {
         if (controller.isGrounded)

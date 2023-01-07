@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     public Camera cam;
-    Vector2 mouseSensitivity = new Vector2(40f, 30f);
-    Vector2 joystickSensitivity = new Vector2(100f, 100f);
+    public Vector2 mouseSensitivity = new Vector2(40f, 30f);
+    public Vector2 joystickSensitivity = new Vector2(100f, 100f);
 
-    private float camRotX = 0f;
+    private float verticalRot = 0f;
 
     public void ProcessLookMouse(Vector2 input)
     {
@@ -23,9 +23,9 @@ public class PlayerLook : MonoBehaviour
     private void _ProcessLook(float x, float y, Vector2 sensitivity)
     {
         // Rotate camera up-down
-        camRotX -= y * sensitivity.y * Time.deltaTime;
-        camRotX = Mathf.Clamp(camRotX, -40f, 40f);
-        cam.transform.localRotation = Quaternion.Euler(camRotX, 0, 0);
+        verticalRot -= y * sensitivity.y * Time.deltaTime;
+        verticalRot = Mathf.Clamp(verticalRot, -40f, 40f);
+        cam.transform.localRotation = Quaternion.Euler(verticalRot, 0, 0);
 
         // Rotate player left-right
         transform.Rotate(Vector3.up * x * sensitivity.x * Time.deltaTime);

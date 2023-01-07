@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    public float speed = 5f;
     public float gravity = -30f;
+    // Constants
+    public float walkSpeed = 5;
+    public float sprintSpeed = 16;
     public float jumpHeight = 1.5f;
 
     private CharacterController controller;
@@ -11,6 +13,14 @@ public class PlayerMotor : MonoBehaviour
 
     private bool crouching = false;
     private float crouchTimer = -1f;
+
+    private bool sprinting = false;
+    private float speed;
+
+    private void Awake()
+    {
+        speed = walkSpeed;
+    }
 
     void Start()
     {
@@ -42,6 +52,12 @@ public class PlayerMotor : MonoBehaviour
     {
         crouching = !crouching;
         crouchTimer = 0;
+    }
+
+    public void Sprint()
+    {
+        sprinting = !sprinting;
+        speed = sprinting ? sprintSpeed : walkSpeed;
     }
 
     // Private Update -----------------

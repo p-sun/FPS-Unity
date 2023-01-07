@@ -49,8 +49,12 @@ public class InputManager : MonoBehaviour
         playerInput = new PlayerInput();
         
         playerInput.OnFoot.Jump.performed += ctx => motor.Jump();
+        
         playerInput.OnFoot.Crouch.started += ctx => motor.Crouch();
         playerInput.OnFoot.Crouch.canceled += ctx => motor.Crouch();
+
+        playerInput.OnFoot.Sprint.started += ctx => motor.Sprint();
+        playerInput.OnFoot.Sprint.canceled += ctx => motor.Sprint();
 
         playerInput.OnFoot.Enable();
     }

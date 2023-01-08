@@ -10,6 +10,8 @@ public abstract class Interactable : MonoBehaviour
     public string promptMessage;
 
     public void BaseInteract() {
+        if (useEvents)
+            GetComponent<InteractionEvent>().OnInteract.Invoke();
         Interact();
     }
 

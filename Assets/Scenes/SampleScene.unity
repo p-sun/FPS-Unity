@@ -1609,12 +1609,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906734c16c23fce468b2f6df9dd9ffc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEvents: 0
   promptMessage: Change Color (E)
   colors:
   - {r: 0, g: 0.9607844, b: 0.8313726, a: 0}
   - {r: 0.60784316, g: 0.3647059, b: 0.8980393, a: 0}
   - {r: 0, g: 0.73333335, b: 0.97647065, a: 0}
-  - {r: 0.9960785, g: 0.8941177, b: 0.2509804, a: 0}
+  - {r: 0.64046705, g: 0.99607843, b: 0.25098044, a: 0}
   - {r: 0.9450981, g: 0.35686275, b: 0.70980394, a: 0}
 --- !u!1 &903390190
 GameObject:
@@ -1938,6 +1939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a5aa9ac0184154d8f184d7487ecbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEvents: 0
   promptMessage: Use Keypad (E)
   door: {fileID: 1894174689}
 --- !u!20 &1255708178 stripped
@@ -2076,6 +2078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6419c16131cc2f649905c0730849baea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEvents: 0
   promptMessage: Animate Cube (E)
 --- !u!1 &1312419031
 GameObject:
@@ -8224,6 +8227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d305abf368a8284e92e07e7d5ac159c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEvents: 0
   promptMessage: Collect Cube (E)
   particle: {fileID: 1632298814}
 --- !u!1 &2067860365

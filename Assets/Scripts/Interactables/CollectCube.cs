@@ -18,7 +18,9 @@ public class CollectCube : Interactable
         Vector3 pos = transform.position;
         pos.y = -10f;
         transform.position = pos;
+
         particle.Play();
+
         StartCoroutine(ActivateGameObject());
     }
 

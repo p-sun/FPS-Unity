@@ -16,8 +16,6 @@ public class ChangeColorCube : Interactable
 
     protected override void Interact()
     {
-        base.Interact();
-
         colorIndex = (colorIndex + 1) % colors.Length;
         meshRend.material.color = colors[colorIndex];
     }

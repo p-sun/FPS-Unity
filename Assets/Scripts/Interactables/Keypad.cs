@@ -10,7 +10,6 @@ public class Keypad : Interactable
 
     protected override void Interact()
     {
-        base.Interact();
         doorOpen = !doorOpen;
         door.GetComponent<Animator>().SetBool("IsOpen", doorOpen);
     }

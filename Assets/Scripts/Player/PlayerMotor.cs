@@ -30,26 +30,23 @@ public class PlayerMotor : MonoBehaviour
     // Fixed Update -----------------
     public void ProcessMove(Vector2 input)
     {
-        // Move Horizontally
-        Vector3 moveDir = new Vector3(input.x, 0, input.y);
-        controller.Move(transform.TransformDirection(moveDir) * speed * Time.deltaTime);
+        // Horizontal Move
+        Vector3 moveDir = new Vector3(input.x, 0, input.y) * speed;
+        moveDir = transform.TransformDirection(moveDir);
 
-        // Move Vertically
+        // Fall via Gravity
         playerVelocity.y += gravity * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        moveDir.y = playerVelocity.y;
+        controller.Move(moveDir * Time.deltaTime);
         if (controller.isGrounded)
-        {
             playerVelocity.y = -2f;
-        }
     }
 
     // Input -----------------
     public void Jump()
     {
         if (controller.isGrounded)
-        {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
     }
 
     public void Crouch()
@@ -80,9 +77,8 @@ public class PlayerMotor : MonoBehaviour
             // 2 - Player is exactly standing at ground height. 1 - Numbers height OR lower than 1 will move player UP.
             float targetHeight = crouching ? 1f : 2f;
             controller.height = Mathf.Lerp(controller.height, targetHeight, p);
-            if (p > 1) {
+            if (p > 1)
                 crouchTimer = -1f;
-            }
         }
     }
 }

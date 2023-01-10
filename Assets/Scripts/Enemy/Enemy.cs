@@ -10,18 +10,11 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent agent;
 
     private StateMachine stateMachine;
-    [SerializeField]
-    private string currentState; // Debugging only
     
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         stateMachine = GetComponent<StateMachine>();
         stateMachine.Initialize();
-    }
-
-    void Update()
-    {
-        
     }
 }
